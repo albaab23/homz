@@ -1,0 +1,112 @@
+.menu {
+  position: sticky;
+  top: 0;
+  z-index: 15;
+  background: rgba(255, 255, 255, 0.94);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(14px);
+}
+
+.menuInner {
+  width: min(1200px, calc(100% - 48px));
+  min-height: 62px;
+  margin: 0 auto;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-around;
+  gap: 8px;
+}
+
+.menu a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 0 19px;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: color 160ms ease;
+}
+
+.menu a::after {
+  content: "";
+  position: absolute;
+  right: 18px;
+  bottom: -1px;
+  left: 18px;
+  height: 2px;
+  background: var(--primary);
+  border-radius: 2px 2px 0 0;
+  transform: scaleX(0);
+  transition: transform 160ms ease;
+}
+
+.menu a:hover,
+.menu a.active {
+  color: var(--primary);
+}
+
+.menu a.active::after {
+  transform: scaleX(1);
+}
+
+.menu a svg {
+  width: 18px;
+  height: 18px;
+  stroke-width: 1.8;
+}
+
+.navIcon {
+  position: relative;
+  display: inline-flex;
+}
+
+.cartBadge {
+  position: absolute;
+  top: -8px;
+  right: -9px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  display: grid;
+  place-items: center;
+  color: white;
+  background: var(--primary);
+  border: 2px solid white;
+  border-radius: 20px;
+  font-size: 0.61rem;
+  line-height: 1;
+}
+
+@media (max-width: 600px) {
+  .menu {
+    top: auto;
+    bottom: 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 0;
+    box-shadow: 0 -8px 24px rgba(49, 37, 28, 0.06);
+  }
+
+  .menuInner {
+    width: 100%;
+    min-height: 64px;
+    justify-content: space-around;
+    gap: 0;
+  }
+
+  .menu a {
+    flex: 1;
+    flex-direction: column;
+    gap: 4px;
+    padding: 8px 2px;
+    font-size: 0.68rem;
+  }
+
+  .menu a::after {
+    right: 25%;
+    left: 25%;
+  }
+}

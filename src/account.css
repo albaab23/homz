@@ -1,0 +1,150 @@
+.accountPage {
+  width: min(100% - 32px, 480px);
+  min-height: calc(100vh - 220px);
+  margin: 0 auto;
+  padding: 48px 0 76px;
+}
+
+.accountIntro {
+  margin-bottom: 22px;
+  text-align: center;
+}
+
+.accountEyebrow {
+  color: var(--primary);
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.accountIntro h1,
+.accountSignedIn h1 {
+  margin: 8px 0 6px;
+  color: var(--ink);
+  font-size: 1.8rem;
+  letter-spacing: -0.04em;
+}
+
+.accountIntro p,
+.accountDescription {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.account {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: 0 12px 35px rgba(49, 37, 28, 0.05);
+}
+
+.account label {
+  margin: 0 0 8px;
+  color: var(--ink);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.account input {
+  width: 100%;
+  height: 48px;
+  margin-bottom: 18px;
+  padding: 0 13px;
+  color: var(--ink);
+  background: #fcfaf8;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  outline: 0;
+  font-size: 0.88rem;
+  direction: ltr;
+  text-align: left;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.account input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(145, 77, 52, 0.1);
+}
+
+.account > button,
+.accountSignedIn > button {
+  min-height: 48px;
+  margin-top: 5px;
+  color: white;
+  background: var(--primary);
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 700;
+  transition: background 160ms ease;
+}
+
+.account > button:hover,
+.accountSignedIn > button:hover {
+  background: var(--primary-dark);
+}
+
+.account > button:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.accountSwitch {
+  margin: 19px 0 0;
+  color: var(--muted);
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+.accountSwitch button {
+  padding: 0;
+  color: var(--primary);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+}
+
+.accountMessage {
+  margin: 0 0 14px;
+  padding: 11px 13px;
+  color: #37684a;
+  background: #edf7f0;
+  border: 1px solid #d5eadb;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  line-height: 1.7;
+}
+
+.accountMessage.isError {
+  color: #a63e39;
+  background: #fff3f1;
+  border-color: #f0d7d4;
+}
+
+.accountSignedIn {
+  align-items: center;
+  text-align: center;
+}
+
+.accountSignedIn > button {
+  width: 100%;
+  margin-top: 24px;
+}
+
+@media (max-width: 600px) {
+  .accountPage {
+    min-height: calc(100vh - 190px);
+    padding: 34px 0 95px;
+  }
+
+  .account {
+    padding: 24px 20px;
+  }
+}

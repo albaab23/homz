@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700&display=swap');
+
+:root {
+  font-family: 'Alexandria', Tahoma, Arial, sans-serif;
+  color: #302923;
+  background: #faf8f5;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-optical-sizing: auto;
+  font-weight: 400;
+
+  --background: #faf8f5;
+  --surface: #ffffff;
+  --ink: #302923;
+  --muted: #81776f;
+  --border: #eee8e2;
+  --primary: #914d34;
+  --primary-dark: #713923;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  direction: rtl;
+  background: var(--background);
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 3px solid rgba(145, 77, 52, 0.35);
+  outline-offset: 3px;
+}
+
+::selection {
+  color: white;
+  background: var(--primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
