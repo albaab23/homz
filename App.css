@@ -1,0 +1,42 @@
+.appShell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.appShell > main {
+  flex: 1;
+}
+
+.siteFooter {
+  min-height: 112px;
+  padding: 23px max(24px, calc((100% - 1200px) / 2));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  color: #d7ccc4;
+  background: #302923;
+}
+
+.siteFooter > span {
+  color: white;
+  font-size: 1.02rem;
+  font-weight: 700;
+}
+
+.siteFooter p,
+.siteFooter small {
+  margin: 0;
+  font-size: 0.76rem;
+}
+
+@media (max-width: 600px) {
+  .siteFooter {
+    padding: 20px 16px;
+    flex-direction: column;
+    gap: 7px;
+    text-align: center;
+    margin-top: auto;
+  }
+}
