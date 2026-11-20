@@ -33,10 +33,10 @@
 
 @media (max-width: 600px) {
   .siteFooter {
-    margin-bottom: 64px;
     padding: 20px 16px;
     flex-direction: column;
     gap: 7px;
     text-align: center;
+    margin-top: auto;
   }
 }

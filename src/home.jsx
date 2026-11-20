@@ -57,6 +57,11 @@ function Home() {
     setLoading(false)
   }
   const addtocart = async (product) => {
+    const {data: {user}} = await supabase.auth.getUser()
+    if (!user) {
+     alert('يجب عليك تسجيل الدخول للإضافة الى السلة')
+     return
+    }
     const {data, error} = await supabase.from('cart').upsert([{
       product_id: product.id,
       name: product.name,
@@ -82,6 +87,11 @@ function Home() {
     }
   }
   const addtofavorite = async (product) => {
+    const {data: {user}} = await supabase.auth.getUser()
+    if (!user) {
+      alert('يجب عليك تسجيل الدخول للإضافة الى المفضلة')
+      return
+    }
     const {data, error} = await supabase.from('favorite').upsert([{
       product_id: product.id,
          name: product.name,
