@@ -2,7 +2,6 @@ import imageCompression from 'browser-image-compression'
 import './adminpanel.css'
 import {useState, useEffect} from 'react'
 import {supabase} from './supabaseclient'   
-
 const PAGE_SIZE = 8
 
 function AdminPanel() {
@@ -15,6 +14,15 @@ function AdminPanel() {
     const [editid, setEditid] = useState(null)
     const [list, setList] = useState([])
     const [currentPage, setCurrentPage] = useState(1)
+    async function checkUser() {
+        const {data: {user}} = await supabase.auth.getUser()
+        if (!user) {
+            window.location.href = '/login.html'
+        }
+    }
+    useEffect(() => {
+        checkUser()
+    }, [])
     const requestslist = {
         name: name,
         price: price,

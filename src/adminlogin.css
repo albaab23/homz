@@ -2,30 +2,72 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    color: #333;
+    text-align: center;
+    padding: 20px;
+    margin: 0;
 }
 .account {
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     border-radius: 20px;
     margin: 0 auto;
-   box-shadow: 0 8px 24px rgba(28, 21, 17, 0.2);
-   padding: 20px; 
-   width: 50%;  
-   gap: 20px;
-   input {
-border-radius: 10px;
-padding: 10px;
-width: 100%;
-   }
-   button {
-    width: 100%;
-    border: none;
-    border-radius: 15px;
-    padding: 10px;
-    font-size: 1.25rem;
-    background-color: orange;
-    color: white;
-   }
+    box-shadow: 0 8px 24px rgba(28, 21, 17, 0.2);
+    padding: 20px;
+    gap: 40px;
+    input {
+        border-radius: 15px;
+        padding: 10px;
+        width: 100%;
+        border: 1px solid #ccc;
+        font-size: 1.25rem;
+        font-family: 'Arial', sans-serif;
+        color: #333;
+        text-align: center;
+        padding: 10px;
+        outline: none;
+        box-shadow: 0 8px 24px rgba(28, 21, 17, 0.2);
+        transition: all 0.3s ease;
+        &:focus {
+            border: 1px solid orange;
+            box-shadow: 0 8px 24px rgba(28, 21, 17, 0.2);
+        }
+    }
+    button {
+        width: 100%;
+        border: none;
+        border-radius: 15px;
+        padding: 10px;
+        margin-top: 40px;
+        font-size: 1.25rem;
+        background-color: orange;
+        color: white;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        &:hover {
+            background-color: #e67e22;
+            box-shadow: 0 8px 24px rgba(28, 21, 17, 0.2);
+        }
+    }
+}
+@media (max-width: 768px) {
+    .account {
+        width: 80%;
+    }
+}
+@media (max-width: 480px) {
+    .account {
+        width: 90%;
+    }
 }

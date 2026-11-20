@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import { supabase } from './supabaseclient';
-import { FiHeart } from 'react-icons/fi';
+import { FiCheckCircle, FiHeart } from 'react-icons/fi';
 import './home.css';
 import { useSearchParams } from 'react-router-dom';
 const images = []
@@ -32,8 +32,9 @@ function Home() {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [currentpage, setcurrentpage] = useState(1)
   const [loading, setLoading] = useState(true)
-  const [showmessage, setshowmessage] = useState(true)
+  const [showmessage, setshowmessage] = useState(false)
   const lastcategory = useRef(null)
+  const messagetimer = useRef(null)
   const [searchParams] = useSearchParams()
   const searchquery = searchParams.get('q') || ''
   const handleproducts = async (categoryid) => {
@@ -56,32 +57,44 @@ function Home() {
     setLoading(false)
   }
   const addtocart = async (product) => {
-    const {data, error} = await supabase.from('cart').insert([{
+    const {data, error} = await supabase.from('cart').upsert([{
       product_id: product.id,
       name: product.name,
       price: product.price,
       description: product.description,
       image_url: product.image_url,
       quantity: product.quantity
-    }])
+    }],
+    {
+      onConflict: 'product_id,user_id',
+      ignoreDuplicates: true,
+    }
+  )
+
     if(error) {
       console.log(error)
     }else {
       setshowmessage(true)
-      setTimeout(() => {
+      clearTimeout(messagetimer.current)
+      messagetimer.current = setTimeout(() => {
         setshowmessage(false)
       }, 3000)
     }
   }
   const addtofavorite = async (product) => {
-    const {data, error} = await supabase.from('favorite').insert([{
+    const {data, error} = await supabase.from('favorite').upsert([{
       product_id: product.id,
          name: product.name,
       price: product.price,
       description: product.description,
       image_url: product.image_url,
       quantity: product.quantity
-    }])
+    }],
+    {
+      onConflict: 'product_id,user_id',
+      ignoreDuplicates: true,
+    }
+  )
        if(error) {
       console.log(error)
     }else {
@@ -101,6 +114,7 @@ const channel = supabase.channel('orders_changes').on('postgres_changes', {event
    }).subscribe()
      return () => {
     supabase.removeChannel(channel)
+    clearTimeout(messagetimer.current)
   }
   }, [])
   useEffect(() => {
@@ -259,6 +273,12 @@ const channel = supabase.channel('orders_changes').on('postgres_changes', {event
           .home-product-grid { grid-template-columns: 1fr; }
         }
       `}</style>
+      {showmessage && (
+        <div className="home-cart-toast" role="status" aria-live="polite">
+          <FiCheckCircle aria-hidden="true" />
+          <span>تمت الإضافة إلى السلة</span>
+        </div>
+      )}
       <div className='home-category-strip' aria-label='أصناف المنتجات'>
         {images.map((index) => {
           const categoryId = index.replace('/', '').replace('.jpg', '')
@@ -309,9 +329,7 @@ const channel = supabase.channel('orders_changes').on('postgres_changes', {event
                 <button className='home-add-to-cart' onClick={() => addtocart(product)}>أضف للسلة</button>
           <button className='order-product' onClick={() => orderproduct(product)}>اطلب الان</button>
                 </div>
-                {showmessage && <p className='home-message'>تمت الاضافة الى السلة</p>}
               </div>
-
             </article>
           )
         })}
