@@ -16,7 +16,7 @@ function AdminPanel() {
     const [currentPage, setCurrentPage] = useState(1)
     async function checkUser() {
         const {data: {user}} = await supabase.auth.getUser()
-        if (!user || user.email !== 'basesupa05@admin.com') {
+        if (!user || user.email !== 'basesupa05@gmail.com') {
             window.location.href = '/login.html'
         }
     }
