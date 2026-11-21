@@ -7,22 +7,29 @@ import { VitePWA } from 'vite-plugin-pwa'
 export default defineConfig({
   plugins: [react(), VitePWA({
     registerType: 'autoUpdate',
+    includeAssets: ['favicon.png', 'apple-touch-icon.png', 'pwa-192.png', 'pwa-512.png', 'homz.jpg'],
     manifest: {
-      name: 'homz-store',
-      short_name: 'homz-store',
-      description: 'homz-store',
-      theme_color: '#000000',
-      background_color: '#000000',
+      name: 'هومز',
+      short_name: 'هومز',
+      description: 'هومز — تفاصيل تصنع الفرق',
+      theme_color: '#faf8f5',
+      background_color: '#faf8f5',
       display: 'standalone',
       scope: '/',
       start_url: '/',
+      lang: 'ar',
+      dir: 'rtl',
       icons: [
-        { src: '/homz.jpg', sizes: '192x192', type: 'image/png' },
-        { src: '/homz.jpg', sizes: '512x512', type: 'image/png' },
+        { src: '/pwa-192.png', sizes: '192x192', type: 'image/png', purpose: 'any' },
+        { src: '/pwa-512.png', sizes: '512x512', type: 'image/png', purpose: 'any' },
+        { src: '/pwa-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
       ],
     },
     workbox: {
       navigateFallback: null,
+    },
+    devOptions: {
+      enabled: true,
     },
   })],
   build: {
