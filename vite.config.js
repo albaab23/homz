@@ -17,8 +17,8 @@ export default defineConfig({
       scope: '/',
       start_url: '/',
       icons: [
-        { src: '/homz.png', sizes: '192x192', type: 'image/png' },
-        { src: '/homz.png', sizes: '512x512', type: 'image/png' },
+        { src: '/homz.jpg', sizes: '192x192', type: 'image/png' },
+        { src: '/homz.jpg', sizes: '512x512', type: 'image/png' },
       ],
     },
     workbox: {
