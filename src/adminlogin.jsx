@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { supabase } from "./supabaseclient"
+import { supabaseAdmin as supabase } from "./supabaseclient"
 import "./adminlogin.css"
 function Adminlogin() {
 const [email, setemail] = useState('')

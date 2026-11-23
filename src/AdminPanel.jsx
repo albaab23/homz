@@ -1,7 +1,7 @@
 import imageCompression from 'browser-image-compression'
 import './adminpanel.css'
 import {useState, useEffect} from 'react'
-import {supabase} from './supabaseclient'   
+import {supabaseAdmin as supabase} from './supabaseclient'   
 const PAGE_SIZE = 8
 
 function AdminPanel() {
