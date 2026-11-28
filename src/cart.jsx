@@ -27,6 +27,12 @@ function Cart() {
   const total = products.reduce((sum, product) => {
 return sum + Number(product.price)
   }, 0)
+  const whatsappnumber = '0956623232'
+  const handleCheckout = () => {
+const message = `مرحبا اريد الاستفسار عن ${products.map((product) => product.name).join(', ')} هل هو متوفر`
+const url = `https://wa.me/${whatsappnumber}?text=${encodeURIComponent(message)}`
+window.open(url, "_blank")
+  }
   return (
     <main className="pageShell cartPage">
       <div className="pageHeading">
@@ -51,6 +57,7 @@ return sum + Number(product.price)
           )
         })}
       </div>
+      <button className='checkout-button' onClick={handleCheckout}>اتمام الطلب</button>
     </main>
   );
 }

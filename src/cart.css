@@ -5,6 +5,31 @@
   padding: 36px 0 80px;
 }
 
+.checkout-button {
+  width: 100%;
+  height: 45px;
+  background: var(--primary);
+  color: white;
+  margin-top: 20px;
+  border-radius: 11px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  transition: background 160ms ease, transform 160ms ease;
+}
+
+.checkout-button:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+}
+
+.checkout-button:active {
+  transform: translateY(0);
+}
+
+.checkout-button:focus {
+  outline: none;
+}
+
 .sectionEyebrow {
   display: inline-block;
   margin-bottom: 8px;
