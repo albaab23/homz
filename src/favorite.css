@@ -5,7 +5,17 @@
   margin: 0 auto;
   padding: 36px 0 80px;
 }
-
+.remove-from-favorite {
+  background-color: brown;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.remove-from-favorite:hover {
+  background-color: #ff7875;
+}
 .favoritesPage .sectionEyebrow {
   display: inline-block;
   margin-bottom: 8px;

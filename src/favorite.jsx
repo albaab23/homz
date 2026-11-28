@@ -23,6 +23,14 @@ function Favorite () {
     if(products.length === 0) {
       return <p className='empty-favorites'>لم تتم إضافة أي منتج إلى المفضلة بعد.</p>
     }
+    const handleRemoveFromFavorite = async (id) => {
+      const {error} = await supabase.from('favorite').delete().eq('id', id)
+      if(error) {
+        console.log(error, 'ewdiihew')
+      }else {
+        fetchitems()
+      }
+    }
   return (
     <main className="pageShell favoritesPage">
       <div className="pageHeading">
@@ -39,6 +47,7 @@ function Favorite () {
               {product.description ? <p className="cart-item-desc">{product.description}</p> : null}
               <p className="cart-item-price">{product.price} ل.س</p>
               {product.quantity ? <p className="cart-item-qty">الكمية: {product.quantity}</p> : null}
+              <button className='remove-from-favorite' onClick={() => handleRemoveFromFavorite(product.id)}>ازالة من المفضلة</button>
             </div>
           )
         })}
